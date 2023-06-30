@@ -8,6 +8,7 @@ def hensaNoNijyoList(list):
     return nijyoList
 
 def calcurationKakuritu(times):
+    print(f"検証回数{times}")
     weaponDic = {}
     n = 0
     while n < times:
