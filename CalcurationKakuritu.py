@@ -29,7 +29,12 @@ def calcurationKakuritu(times):
         hensa.append(heikin - weaponDic[t])
     heikinHensa = sum(hensaNoNijyoList(hensa))/len(hensaNoNijyoList(hensa))
     print(f"分散：{heikinHensa}")
-
+    print(f"標準偏差：{heikinHensa**(1/2)}")
+    print(f"変動変数：{heikinHensa**(1/2)/len(hensaNoNijyoList(hensa))}")
+    print("----------------------")
+    #print(f"回数：{weaponDic}")
+    #print("----------------------")
+    #print(f"偏差：{hensa}")
     #検証用
     # print(hensa[1])
     # print(hensaNoNijyoList(hensa)[1])

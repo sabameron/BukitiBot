@@ -104,4 +104,4 @@ async def 検証(ctx):
     view = NewView(timeout=None)
     await ctx.channel.send("ボタンをクリックして検証を開始してください！", view=view)
 
-bot.run("MTEyMTQyNjYxNjAwMjgxNDA2Nw.Gv-0w-.MWME7AL3-o6-oFyoXpyz_G5CTMMHw-hOsJWeH0")
+bot.run("MTEyMTQyNjYxNjAwMjgxNDA2Nw.GWByU-.u5kb0uWFj0hTN3KtNpejFutJkpof05oDVY5Iic")
