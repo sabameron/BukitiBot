@@ -1,3 +1,4 @@
+import os
 import subprocess
 import discord
 from discord.ext import commands
@@ -104,4 +105,4 @@ async def 検証(ctx):
     view = NewView(timeout=None)
     await ctx.channel.send("ボタンをクリックして検証を開始してください！", view=view)
 
-bot.run("MTEyMTQyNjYxNjAwMjgxNDA2Nw.GWByU-.u5kb0uWFj0hTN3KtNpejFutJkpof05oDVY5Iic")
+bot.run(os.environ["BUKITI_TOKEN"])
