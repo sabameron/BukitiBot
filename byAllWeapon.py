@@ -1,5 +1,12 @@
 import random
 import pickle
+import sys
+
+if len(sys.argv) < 2:
+    id = "0"
+else :
+    id = str(sys.argv[1])
+
 
 buki_all = ['わかばシューター',
  'もみじシューター',
@@ -92,15 +99,16 @@ buki_all = ['わかばシューター',
  '14式竹筒銃・甲',
  'R-PEN/5H']
 
-# ファイルパス
-cache_file = "w_cache.pkl"
-
-# wの初期化
-def initialize_w():
-    return [1] * len(buki_all)
 
 
-def bukiRandom():
+def bukiRandom(id):
+    # ファイルパス
+    cache_file = f"w_cache_{id}.pkl"
+
+    # wの初期化
+    def initialize_w():
+        return [1] * len(buki_all)
+    
     # wの読み込み
     def load_w():
         try:
@@ -131,5 +139,5 @@ def bukiRandom():
     return buki
 
 if __name__ == "__main__": 
-    print(f"||『{bukiRandom()}』||を使うでし！")
+    print(f"||『{bukiRandom(id)}』||を使うでし！")
     #print(len(buki_name))

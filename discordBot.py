@@ -16,14 +16,12 @@ class SampleView(discord.ui.View):
     
     @discord.ui.button(label="全員", style=discord.ButtonStyle.primary)
     async def zen1(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # "一般"という名前のボイスチャンネルを取得
         channel = discord.utils.get(interaction.guild.voice_channels, name='一般')
 
         if channel is None:
             await interaction.response.send_message("『一般』ボイスチャンネルが見つかりません")
             return
 
-        # ボイスチャンネルに参加しているメンバーを取得
         members = channel.members
         sendMsg = f"ぶきち:"
 
@@ -38,19 +36,17 @@ class SampleView(discord.ui.View):
     
     @discord.ui.button(label="全武器からキメル", style=discord.ButtonStyle.success)
     async def ng(self, interaction: discord.Interaction, button: discord.ui.Button):
-        result = await self.run_external_script2()
+        result = await self.run_external_script2("None")
         await interaction.response.send_message(f"{interaction.user.mention}ぶきち:{result}")
 
     @discord.ui.button(label="全員", style=discord.ButtonStyle.success)
     async def zen2(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # "一般"という名前のボイスチャンネルを取得
         channel = discord.utils.get(interaction.guild.voice_channels, name='一般')
 
         if channel is None:
             await interaction.response.send_message("『一般』ボイスチャンネルが見つかりません")
             return
 
-        # ボイスチャンネルに参加しているメンバーを取得
         members = channel.members
         sendMsg = f"ぶきち:"
 
@@ -59,7 +55,8 @@ class SampleView(discord.ui.View):
             return
 
         for member in members:
-            result = await self.run_external_script2()
+            #print(member.id)
+            result = await self.run_external_script2(str(member.id))
             sendMsg = sendMsg + f"{member.mention}は{result}"
         await interaction.response.send_message(sendMsg)
 
@@ -70,12 +67,13 @@ class SampleView(discord.ui.View):
         except subprocess.CalledProcessError as e:
             return f"Error: {e.returncode}, Output: {e.output.decode('utf-8')}"
 
-    async def run_external_script2(self):
+    async def run_external_script2(self, discord_id):
         try:
-            result = subprocess.check_output(["python", "byAllWeapon.py"])
+            result = subprocess.check_output(["python", "byAllWeapon.py", discord_id])
             return result.decode("utf-8")
         except subprocess.CalledProcessError as e:
             return f"Error: {e.returncode}, Output: {e.output.decode('utf-8')}"
+
 
 class NewView(discord.ui.View):
     def __init__(self, timeout=180):
@@ -92,7 +90,6 @@ class NewView(discord.ui.View):
             return result.decode("utf-8")
         except subprocess.CalledProcessError as e:
             return f"Error: {e.returncode}, Output: {e.output.decode('utf-8')}"
-
 
 @bot.command()
 async def test(ctx):

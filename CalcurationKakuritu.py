@@ -12,7 +12,7 @@ def calcurationKakuritu(times):
     n = 0
     pbar = tqdm(total=times, ncols=80)  # 進捗バーを表示
     while n < times:
-        buki = bukiRandom()
+        buki = bukiRandom("Calcuration")
         if buki in weaponDic.keys():
             weaponDic[buki] = weaponDic[buki] + 1
         else:
@@ -32,5 +32,6 @@ def calcurationKakuritu(times):
     print(f"標準偏差：{heikinHensa**(1/2)}")
     print(f"変動変数：{heikinHensa**(1/2)/len(hensaNoNijyoList(hensa))}")
     print("----------------------")
+    print(weaponDic)
 
-calcurationKakuritu(1500)
+calcurationKakuritu(90)
