@@ -1,9 +1,11 @@
 import os
 import subprocess
 import discord
+from dotenv import load_dotenv
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix="!", ignore_bots=True, intents=discord.Intents.all())
+load_dotenv()
 
 class SampleView(discord.ui.View):
     def __init__(self, timeout=180):
